@@ -13,7 +13,8 @@ In this hands-on workshop we will achieve the follow:
 * Step 5 Fix the Dockerfile FROM tag using a Pull Request 
 * Step 6 Build / Push the image to Docker Hub 
 * Step 7 Test using the Snyk CLI for your goof container 
-* Step 8 Test using the “Add to Project” Docker Hub Integration
+* Step 8 Test using "Add to Project” through the Docker Hub Integration
+* Step 9 Container Reporting Dashboard
 
 ## Prerequisites
 
@@ -49,7 +50,18 @@ First we need to connect Snyk to GitHub so we can import our Repository. Do so b
 
 ## Step 3 Configure Docker Hub Integration
 
-TODO://
+Enable integration between Docker Hub and Snyk, to start managing your container vulnerabilities. To do that we must first connect to Docker Hub 
+
+* Navigating to Integrations -> Container Registries -> Docker Hub 
+* Enter your Docker Hub username and Access Token and then click Save
+
+Snyk tests the connection values and the page reloads, now displaying Docker Hub integration information and the Add your Docker Hub images to Snyk button. A confirmation message that the details were saved also appears in green at the top of the screen. In addition, if the connection to Docker Hub failed, a notification appears
+
+Note: As the access token, you can either use your DockerHub password or an [access token](https://docs.docker.com/docker-hub/access-tokens/) created in DockerHub. In case 2FA is activated on your account, access token only is applicable
+
+![alt tag](https://i.ibb.co/hYyb7RD/snyk-container-1.png)
+
+![alt tag](https://i.ibb.co/pWkKGmh/snyk-container-2.png)
 
 ## Step 4 Find vulnerabilities in Goof’s Dockerfile
 
@@ -71,6 +83,9 @@ TODO://
 
 TODO://
 
+## Step 9 Container Reporting Dashboard
+
+TODO://
 
 Thanks for attending and completing this workshop
 
