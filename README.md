@@ -73,7 +73,7 @@ $ docker login -u DOCKER_HUB_USERNAME -p YOIUR_ACCESS_TOKEN_OR_PASSWORD
 Login Succeeded
 ```
 
-* Pull down the following image as shown below. Replace DOCKER_HUB_USERNAME with your Docker Bub username
+* Pull down the following image as shown below. 
 
 ```bash
 $ docker pull pasapples/docker-goof
@@ -84,12 +84,14 @@ Status: Downloaded newer image for pasapples/docker-goof:latest
 docker.io/pasapples/docker-goof:latest
 ```
 
-* Run the following commands to TAG and PUSH the image to your Docker Hub account. Replace DOCKER_HUB_USERNAME with your Docker Bub username
+* Run the following commands to TAG and PUSH the image to your Docker Hub account. 
+  
+Note: Replace DOCKER_HUB_USERNAME with your Docker Bub username. 
 
 ```bash
 $ docker tag pasapples/docker-goof:latest DOCKER_HUB_USERNAME/docker-goof:latest
 
-$ $ docker push  pasapples/docker-goof:latest
+$ $ docker push DOCKER_HUB_USERNAME/docker-goof:latest
 The push refers to repository [docker.io/pasapples/docker-goof]
 1bc5d83ccce7: Layer already exists
 35bda1fbb3d0: Layer already exists
@@ -133,8 +135,11 @@ _Note: the container does not need to be run as Snyk reads the info from the fil
 
 After we have the list of installed software, we look that up against our vulnerability database, which combines public sources with proprietary research
 
-* Let's go ahead and click on the "**latest**" link to view the issues as part of the scan
+* Let's go ahead and click on the "**latest**" link to view the container issues as part of the scan
 
+![alt tag](https://i.ibb.co/HGS4MSP/snyk-container-7.png)
+
+One thing you will notice is recommendations for upgrading the base image. This is handy as we can remove a substantial amount of issues just by using an alternative base image from minor upgrades to major upgrades if available will be shown including what issues will remain if the basde image is changed and the container re-built.  
 
 
 ## Step 5 Find vulnerabilities in Goof’s Dockerfile
