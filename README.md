@@ -29,9 +29,23 @@ _Note: It is assumed your using a mac for these steps but it should also work on
 
 ## Step 1 Fork the Goof Application
 
+Navigate to the following GitHub repo - https://github.com/snyk/goof
+
+* Click on the "**Fork**" button
+* Ensure you are forking this repo to your public GitHub account
+* Click done
+
+![alt tag](https://i.ibb.co/Gdf7N2W/snyk-starter-open-source-2.png)
 
 ## Step 2 Configure GitHub Integration
 
+First we need to connect Snyk to GitHub so we can import our Repository. Do so by:
+
+* Login to http://app.snyk.io Sign up if you haven't already.
+* Navigating to Integrations -> Source Control -> GitHub
+* Fill in your Account Credentials to Connect your GitHub Account.
+
+![alt tag](https://i.ibb.co/bPqqybM/snyk-starter-open-source-1.png)
 
 ## Step 3 Configure Docker Hub Integration
 
