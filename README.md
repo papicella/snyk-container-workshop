@@ -49,21 +49,27 @@ First we need to connect Snyk to GitHub so we can import our Repository. Do so b
 
 ## Step 3 Configure Docker Hub Integration
 
+TODO://
 
 ## Step 4 Find vulnerabilities in Goof’s Dockerfile
 
+TODO://
 
 ## Step 5 Fix the Dockerfile FROM tag using a Pull Request
 
+TODO://
 
 ## Step 6 Build / Push the image to Docker Hub
 
+TODO://
 
 ## Step 7 Test using the Snyk CLI for your goof container
 
+TODO://
 
 ## Step 8 Test using the “Add to Project” Docker Hub Integration
 
+TODO://
 
 
 Thanks for attending and completing this workshop
