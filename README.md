@@ -6,14 +6,14 @@ You may not always have access to the original source code that runs in your con
 
 In this hands-on workshop we will achieve the follow:
 
-Step 1 Fork the Goof Application
-Step 2 Configure GitHub Integration
-Step 3 Configure Docker Hub Integration
-Step 4 Find vulnerabilities in Goof’s Dockerfile
-Step 5 Fix the Dockerfile FROM tag using a Pull Request
-Step 6 Build / Push the image to Docker Hub
-Step 7 Test using the Snyk CLI for your goof container
-Step 8 Test using the “Add to Project” Docker Hub Integration
+* Step 1 Fork the Goof Application
+* Step 2 Configure GitHub Integration 
+* Step 3 Configure Docker Hub Integration 
+* Step 4 Find vulnerabilities in Goof’s Dockerfile 
+* Step 5 Fix the Dockerfile FROM tag using a Pull Request 
+* Step 6 Build / Push the image to Docker Hub 
+* Step 7 Test using the Snyk CLI for your goof container 
+* Step 8 Test using the “Add to Project” Docker Hub Integration
 
 ## Prerequisites
 
