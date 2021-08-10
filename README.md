@@ -141,10 +141,41 @@ After we have the list of installed software, we look that up against our vulner
 
 One thing you will notice is recommendations for upgrading the base image. This is handy as we can remove a substantial amount of issues just by using an alternative base image from minor upgrades to major upgrades if available will be shown including what issues will remain if the basde image is changed and the container re-built.  
 
+The supported base images can be found at this [link](https://snyk.io/docker-images/)
+
+For each Vulnerability, Snyk displays the following ordered by our [Proprietary Priority Score](https://snyk.io/blog/snyk-priority-score/) :
+
+1. The module (O/S, base image or user instruction layer) that introduced it and, in the case of transitive dependencies, its direct dependency
+1. Details on the path and proposed Remediation, as well as the specific vulnerable functions
+1. Overview
+1. Exploit maturity
+1. Links to CWE, CVE and CVSS Score
+1. Social Trends
+1. Plus more ...
 
 ## Step 5 Find vulnerabilities in Goof’s Dockerfile
 
-TODO://
+Snyk detects vulnerable base images by scanning your Dockerfile when importing a Git repository. This allows you to examine security issues before building the image, so helps solve potential problems before they land in your registry or in production.
+
+Now that Snyk is connected to your GitHub Account, import the Repo into Snyk as a Project as this contains a Dockerfile.
+
+* Navigate to Projects
+* Click "**Add Project**" then select "**GitHub**"
+* Click on the Repo "goof" that you forked earlier at Step 1.
+
+![alt tag](https://i.ibb.co/q9Rsxsh/snyk-starter-open-source-3.png)
+
+_Note: The import can take up to one minute, so you can view the import log while it's running as shown below_
+
+![alt tag](https://i.ibb.co/RQsX6jZ/snyk-starter-open-source-14.png)
+
+* Once imported you should see a reference for the Dockerfile as shown below. 
+
+![alt tag](https://i.ibb.co/1rNMFhC/snyk-container-9.png)
+
+* Go ahead and click on the Dockerfile this is similar to what a scan of a container from a registry looks like BUT this tim we are scanning a Dockerfile itself versus the full container image.
+
+In a Dockerfile project, you can find the relevant metadata of the Dockerfile and the base image used. If the base image is an [Official Docker image](https://docs.docker.com/docker-hub/official_images/), the results include recommendations for upgrades to resolve some of the discovered vulnerabilities
 
 ## Step 6 Fix the Dockerfile FROM tag using a Pull Request
 
