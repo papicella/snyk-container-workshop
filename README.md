@@ -233,10 +233,26 @@ Tested 652 dependencies for known issues, found 435 issues.
 
 * Their is also a Distroless version if you would like to try with that
 
-```
+```bash
 $ snyk container test pasapples/spring-crud-thymeleaf-demo:distroless
 ...
 ```
+
+* Finally, we can monitor container images using the "snyk container monitor" command as shown below
+
+```bash
+$ snyk container monitor pasapples/spring-crud-thymeleaf-demo:latest --project-name=spring-crud-thymeleaf-demo-container
+
+Monitoring pasapples/spring-crud-thymeleaf-demo:latest (spring-crud-thymeleaf-demo-container)...
+
+Explore this snapshot at https://app.snyk.io/org/workshops-admin-org/project/1cce2457-a6ac-4f09-8465-9ca596a966fa/history/a253804a-bdb2-4ed1-a7d6-54a321e7f725
+
+Notifications about newly disclosed issues related to these dependencies will be emailed to you.
+```
+
+![alt tag](https://i.ibb.co/vY63PXR/snyk-container-12.png)
+
+* Return to the Snyk App and this time you will see the container image 
 
 ## Step 8 Container Reporting Dashboard
 
@@ -245,6 +261,8 @@ _Note: It can take up to an hour for report pages to show full details so if you
 * Back to the Snyk App navigate to the projects page and select "**View report**" for the "**docker-goof**" project as shown below
 
 * The following report page for the "**docker-goof**" container should be displayed
+
+![alt tag](https://i.ibb.co/yPFVyt2/snyk-container-11.png)
 
 Thanks for attending and completing this workshop
 
