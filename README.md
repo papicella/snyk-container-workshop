@@ -183,11 +183,68 @@ TODO://
 
 ## Step 7 Container Test using the Snyk CLI
 
-TODO://
+The Snyk CLI can run a container test on containers sitting in a registry and even your local docker deamon if you like. All the Snyk CLI needs is acces sto the registry itself which is for public Docker Hub images only requires a "docker login" to achieve that. The following examples show how to use the Snyk CLI to issue a container test.
+
+* You have already built "docker-goof" so go ahead and test that as shown below
+
+```bash
+$ snyk container test pasapples/docker-goof:latest
+
+...
+
+Tested 412 dependencies for known issues, found 889 issues.
+
+Base Image  Vulnerabilities  Severity
+node:14.1   889              45 critical, 186 high, 196 medium, 462 low
+
+Recommendations for base image upgrade:
+
+Minor upgrades
+Base Image  Vulnerabilities  Severity
+node:14.17  530              9 critical, 46 high, 40 medium, 435 low
+
+Major upgrades
+Base Image   Vulnerabilities  Severity
+node:16.5.0  344              3 critical, 31 high, 49 medium, 261 low
+
+Alternative image types
+Base Image                Vulnerabilities  Severity
+node:16.6.0-slim          60               2 critical, 8 high, 5 medium, 45 low
+node:16.6.1-buster-slim   60               2 critical, 8 high, 5 medium, 45 low
+node:16.6.0-buster        343              3 critical, 30 high, 49 medium, 261 low
+node:16.6.0-stretch-slim  78               6 critical, 11 high, 8 medium, 53 low
+```
+
+* The following container test is for a Spring Boot application 
+
+```bash
+$ snyk container test pasapples/spring-crud-thymeleaf-demo:latest
+
+...
+Organization:      pas.apicella-41p
+Package manager:   deb
+Project name:      docker-image|pasapples/spring-crud-thymeleaf-demo
+Docker image:      pasapples/spring-crud-thymeleaf-demo:latest
+Platform:          linux/amd64
+Licenses:          enabled
+
+Tested 652 dependencies for known issues, found 435 issues.
+```
+
+* Their is also a Distroless version if you would like to try with that
+
+```
+$ snyk container test pasapples/spring-crud-thymeleaf-demo:distroless
+...
+```
 
 ## Step 8 Container Reporting Dashboard
 
-TODO://
+_Note: It can take up to an hour for report pages to show full details so if you see very little detail that would be why_
+
+* Back to the Snyk App navigate to the projects page and select "**View report**" for the "**docker-goof**" project as shown below
+
+* The following report page for the "**docker-goof**" container should be displayed
 
 Thanks for attending and completing this workshop
 
