@@ -6,14 +6,14 @@ You may not always have access to the original source code that runs in your con
 
 In this hands-on workshop we will achieve the follow:
 
-* Step 1 Fork the Goof Application
-* Step 2 Configure GitHub Integration 
-* Step 3 Configure Docker Hub Integration 
-* Step 4 Test using the “Add to Project” Docker Hub Integration
-* Step 5 Find vulnerabilities in Goof’s Dockerfile
-* Step 6 Fix the Dockerfile FROM tag using a Pull Request
-* Step 7 Container Test using the Snyk CLI
-* Step 8 Container Reporting Dashboard
+* [Step 1 Fork the Goof Application](#step-1-fork-the-goof-application)
+* [Step 2 Configure GitHub Integration](#step-2-configure-github-integration)
+* [Step 3 Configure Docker Hub Integration](#step-3-configure-docker-hub-integration) 
+* [Step 4 Test using the Add to Project Docker Hub Integration](#step-4-test-using-the-add-to-project-docker-hub-integration)
+* [Step 5 Find vulnerabilities in Goof’s Dockerfile](#step-5-find-vulnerabilities-in-goofs-dockerfile)
+* [Step 6 Fix the Dockerfile FROM tag using a Pull Request](#step-6-fix-the-dockerfile-from-tag-using-a-pull-request)
+* [Step 7 Container Test using the Snyk CLI](#step-7-container-test-using-the-snyk-cli)
+* [Step 8 Container Reporting Dashboard](#step-8-container-reporting-dashboard)
 
 ## Prerequisites
 
@@ -62,7 +62,7 @@ Note: As the access token, you can either use your DockerHub password or an [acc
 
 ![alt tag](https://i.ibb.co/pWkKGmh/snyk-container-2.png)
 
-## Step 4 Test using the “Add to Project” Docker Hub Integration
+## Step 4 Test using the Add to Project Docker Hub Integration
 
 You may already have images in your Dockerhub Registries but lets go and add a new one to your Docker Hub account. 
 
