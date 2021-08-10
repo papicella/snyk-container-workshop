@@ -179,7 +179,27 @@ In a Dockerfile project, you can find the relevant metadata of the Dockerfile an
 
 ## Step 6 Fix the Dockerfile FROM tag using a Pull Request
 
-TODO://
+Here we will go ahead and fix our Dockerfile using the "**Open a Fix PR**" button as follows:
+
+* Click on "**Open a Fix PR**" for the base image "**node:16.6.0-slim**" as per below
+
+![alt tag](https://i.ibb.co/5kY26FR/snyk-container-13.png)
+
+* Click on "**Open a Fix PR**" on the resulting page as shown below
+
+![alt tag](https://i.ibb.co/C0tn01C/snyk-container-14.png)
+
+* A PR is then created as show below. "**Files Changed**" will show you what it's updating in the Dockerfile itself
+
+![alt tag](https://i.ibb.co/py4GdJS/snyk-container-15.png)
+
+* Click on "**Merge Pull Request**" button as shown below
+
+![alt tag](https://i.ibb.co/hCwDCFP/snyk-container-16.png)
+
+* Return to the projects dashboard and you will see a new scan has occurred automatically and now our Dockerfile shows much less issues than previously. Of course until we build a new container and add it to the registry the container itself will still have the old base image in place.
+
+![alt tag](https://i.ibb.co/pbqmR1v/snyk-container-17.png)
 
 ## Step 7 Container Test using the Snyk CLI
 
