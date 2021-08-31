@@ -21,6 +21,7 @@ In this hands-on workshop we will achieve the follow:
 * git CLI - https://git-scm.com/downloads
 * snyk CLI - https://support.snyk.io/hc/en-us/articles/360003812538-Install-the-Snyk-CLI
 * Registered account on Snyk App - http://app.snyk.io
+* Docker Hub Account - https://hub.docker.com/
 * Docker Desktop running locally - https://www.docker.com/products/docker-desktop
 
 # Workshop Steps
