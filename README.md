@@ -63,6 +63,10 @@ Note: As the access token, you can either use your DockerHub password or an [acc
 
 ![alt tag](https://i.ibb.co/pWkKGmh/snyk-container-2.png)
 
+* Snyk Container registry integration supports detecting application vulnerabilities in container images. To enable that follow the instructions here.
+
+[Detecting application vulnerabilities in container images](https://support.snyk.io/hc/en-us/articles/360008593457-Detecting-application-vulnerabilities-in-container-images)
+
 ## Step 4 Test using the Add to Project Docker Hub Integration
 
 You may already have images in your Dockerhub Registries but lets go and add a new one to your Docker Hub account. 
@@ -252,14 +256,55 @@ Licenses:          enabled
 Tested 652 dependencies for known issues, found 435 issues.
 ```
 
-* Their is also a Distroless version if you would like to try with that
+* There is also a Distroless version if you would like to try with that
 
 ```bash
 $ snyk container test pasapples/spring-crud-thymeleaf-demo:distroless
 ...
 ```
 
-* Finally, we can monitor container images using the "snyk container monitor" command as shown below
+* The CLI also allows us to report vulnerabilities of provided level or higher. Now let's go ahead and set that to HIGH using "**--severity-threshold=high**". Only issues tagged as HIGH or CRITICAL will appear on this test run.
+
+```shell
+$ snyk container test --severity-threshold=high pasapples/spring-crud-thymeleaf-demo:latest
+
+Testing pasapples/spring-crud-thymeleaf-demo:latest...
+
+✗ High severity vulnerability found in systemd/libsystemd0
+  Description: Allocation of Resources Without Limits or Throttling
+  Info: https://snyk.io/vuln/SNYK-UBUNTU1804-SYSTEMD-1320128
+  Introduced through: systemd/libsystemd0@237-3ubuntu10.39, apt/libapt-pkg5.0@1.6.12, openssh/openssh-server@1:7.6p1-4ubuntu0.3, procps/libprocps6@2:3.3.12-3ubuntu1.2, util-linux/bsdutils@1:2.31.1-0.4ubuntu3.5, quota@4.04-2ubuntu0.1, util-linux/mount@2.31.1-0.4ubuntu3.5, ubuntu-meta/ubuntu-minimal@1.417.4, systemd/libudev1@237-3ubuntu10.39
+  From: systemd/libsystemd0@237-3ubuntu10.39
+  From: apt/libapt-pkg5.0@1.6.12 > systemd/libsystemd0@237-3ubuntu10.39
+  From: openssh/openssh-server@1:7.6p1-4ubuntu0.3 > systemd/libsystemd0@237-3ubuntu10.39
+  and 17 more...
+  Fixed in: 237-3ubuntu10.49
+
+...
+
+Organization:      pas.apicella-41p
+Package manager:   deb
+Project name:      docker-image|pasapples/spring-crud-thymeleaf-demo
+Docker image:      pasapples/spring-crud-thymeleaf-demo:latest
+Platform:          linux/amd64
+Licenses:          enabled
+
+Tested 652 dependencies for known issues, found 8 issues.
+
+```
+
+The severity threshold allows you to break a build in the event of this threshold being meet using the exit code of the command. 
+
+```
+Possible exit codes and their meaning:
+
+0: success, no vulns found
+1: action_needed, vulns found
+2: failure, try to re-run the command
+3: failure, no supported projects detected
+```
+
+* Finally, can monitor container images using the "**snyk container monitor**" command as shown below, please perfor this step now
 
 ```bash
 $ snyk container monitor pasapples/spring-crud-thymeleaf-demo:latest --project-name=spring-crud-thymeleaf-demo-container
