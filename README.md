@@ -304,7 +304,7 @@ Possible exit codes and their meaning:
 3: failure, no supported projects detected
 ```
 
-* Finally, can monitor container images using the "**snyk container monitor**" command as shown below, please perfor this step now
+* Finally, can monitor container images using the "**snyk container monitor**" command as shown below, please perform this step now
 
 ```bash
 $ snyk container monitor pasapples/spring-crud-thymeleaf-demo:latest --project-name=spring-crud-thymeleaf-demo-container
