@@ -212,7 +212,7 @@ Here we will go ahead and fix our Dockerfile using the "**Open a Fix PR**" butto
 
 The Snyk CLI can run a container test on containers sitting in a registry and even your local docker deamon if you like. All the Snyk CLI needs is acces sto the registry itself which is for public Docker Hub images only requires a "docker login" to achieve that. The following examples show how to use the Snyk CLI to issue a container test.
 
-_Note: Testing container images through the CLI performs the following steps so it can take a few minutes on the first scan_
+_Note: Testing container images through the CLI performs the following steps so it can take a few minutes on the first scan [Test images with the Snyk Container CLI](https://support.snyk.io/hc/en-us/articles/360003946917-Test-images-with-the-Snyk-Container-CLI)_
 
 1. Downloads the image if it’s not already available locally in your Docker daemon
 2. Determines the software installed in the image
@@ -252,53 +252,102 @@ node:16.6.0-stretch-slim  78               6 critical, 11 high, 8 medium, 53 low
 * The following container test is for a Spring Boot application 
 
 ```bash
-$ snyk container test pasapples/spring-crud-thymeleaf-demo:latest
+$ snyk container test pasapples/springbootemployee:cnb
 
-...
+....
+
 Organization:      pas.apicella-41p
 Package manager:   deb
-Project name:      docker-image|pasapples/spring-crud-thymeleaf-demo
-Docker image:      pasapples/spring-crud-thymeleaf-demo:latest
+Project name:      docker-image|pasapples/springbootemployee
+Docker image:      pasapples/springbootemployee:cnb
 Platform:          linux/amd64
+Base image:        ubuntu:bionic-20210325
 Licenses:          enabled
 
-Tested 652 dependencies for known issues, found 435 issues.
+Tested 97 dependencies for known issues, found 32 issues.
+
+Base Image              Vulnerabilities  Severity
+ubuntu:bionic-20210325  31               0 critical, 1 high, 6 medium, 24 low
+
+Recommendations for base image upgrade:
+
+Minor upgrades
+Base Image              Vulnerabilities  Severity
+ubuntu:bionic-20210723  25               0 critical, 0 high, 3 medium, 22 low
+
+Major upgrades
+Base Image    Vulnerabilities  Severity
+ubuntu:20.04  15               0 critical, 0 high, 0 medium, 15 low
 ```
 
 * There is also a Distroless version if you would like to try with that
 
 ```bash
 $ snyk container test pasapples/spring-crud-thymeleaf-demo:distroless
-...
-```
-
-* The CLI also allows us to report vulnerabilities of provided level or higher. Now let's go ahead and set that to HIGH using "**--severity-threshold=high**". Only issues tagged as HIGH or CRITICAL will appear on this test run.
-
-```shell
-$ snyk container test --severity-threshold=high pasapples/spring-crud-thymeleaf-demo:latest
-
-Testing pasapples/spring-crud-thymeleaf-demo:latest...
-
-✗ High severity vulnerability found in systemd/libsystemd0
-  Description: Allocation of Resources Without Limits or Throttling
-  Info: https://snyk.io/vuln/SNYK-UBUNTU1804-SYSTEMD-1320128
-  Introduced through: systemd/libsystemd0@237-3ubuntu10.39, apt/libapt-pkg5.0@1.6.12, openssh/openssh-server@1:7.6p1-4ubuntu0.3, procps/libprocps6@2:3.3.12-3ubuntu1.2, util-linux/bsdutils@1:2.31.1-0.4ubuntu3.5, quota@4.04-2ubuntu0.1, util-linux/mount@2.31.1-0.4ubuntu3.5, ubuntu-meta/ubuntu-minimal@1.417.4, systemd/libudev1@237-3ubuntu10.39
-  From: systemd/libsystemd0@237-3ubuntu10.39
-  From: apt/libapt-pkg5.0@1.6.12 > systemd/libsystemd0@237-3ubuntu10.39
-  From: openssh/openssh-server@1:7.6p1-4ubuntu0.3 > systemd/libsystemd0@237-3ubuntu10.39
-  and 17 more...
-  Fixed in: 237-3ubuntu10.49
 
 ...
 
 Organization:      pas.apicella-41p
 Package manager:   deb
 Project name:      docker-image|pasapples/spring-crud-thymeleaf-demo
-Docker image:      pasapples/spring-crud-thymeleaf-demo:latest
+Docker image:      pasapples/spring-crud-thymeleaf-demo:distroless
 Platform:          linux/amd64
 Licenses:          enabled
 
-Tested 652 dependencies for known issues, found 8 issues.
+Tested 20 dependencies for known issues, found 38 issues.
+```
+
+* The CLI also allows us to report vulnerabilities of provided level or higher. Now let's go ahead and set that to HIGH using "**--severity-threshold=high**". Only issues tagged as HIGH or CRITICAL will appear on this test run.
+
+```shell
+$ snyk container test --severity-threshold=high pasapples/springbootemployee:cnb
+
+Testing pasapples/springbootemployee:cnb...
+
+✗ High severity vulnerability found in systemd/libsystemd0
+  Description: Allocation of Resources Without Limits or Throttling
+  Info: https://snyk.io/vuln/SNYK-UBUNTU1804-SYSTEMD-1320128
+  Introduced through: systemd/libsystemd0@237-3ubuntu10.46, apt/libapt-pkg5.0@1.6.13, procps/libprocps6@2:3.3.12-3ubuntu1.2, util-linux/bsdutils@1:2.31.1-0.4ubuntu3.7, util-linux/mount@2.31.1-0.4ubuntu3.7, systemd/libudev1@237-3ubuntu10.46
+  From: systemd/libsystemd0@237-3ubuntu10.46
+  From: apt/libapt-pkg5.0@1.6.13 > systemd/libsystemd0@237-3ubuntu10.46
+  From: procps/libprocps6@2:3.3.12-3ubuntu1.2 > systemd/libsystemd0@237-3ubuntu10.46
+  and 5 more...
+  Fixed in: 237-3ubuntu10.49
+
+✗ High severity vulnerability found in openssl
+  Description: Buffer Overflow
+  Info: https://snyk.io/vuln/SNYK-UBUNTU1804-OPENSSL-1569474
+  Introduced through: openssl@1.1.1-1ubuntu2.1~18.04.9, ca-certificates@20210119~18.04.1, openssl/libssl1.1@1.1.1-1ubuntu2.1~18.04.9
+  From: openssl@1.1.1-1ubuntu2.1~18.04.9
+  From: ca-certificates@20210119~18.04.1 > openssl@1.1.1-1ubuntu2.1~18.04.9
+  From: openssl/libssl1.1@1.1.1-1ubuntu2.1~18.04.9
+  and 1 more...
+  Fixed in: 1.1.1-1ubuntu2.1~18.04.13
+
+
+
+Organization:      pas.apicella-41p
+Package manager:   deb
+Project name:      docker-image|pasapples/springbootemployee
+Docker image:      pasapples/springbootemployee:cnb
+Platform:          linux/amd64
+Base image:        ubuntu:bionic-20210325
+Licenses:          enabled
+
+Tested 97 dependencies for known issues, found 2 issues.
+
+Base Image              Vulnerabilities  Severity
+ubuntu:bionic-20210325  31               0 critical, 1 high, 6 medium, 24 low
+
+Recommendations for base image upgrade:
+
+Minor upgrades
+Base Image              Vulnerabilities  Severity
+ubuntu:bionic-20210723  25               0 critical, 0 high, 3 medium, 22 low
+
+Major upgrades
+Base Image    Vulnerabilities  Severity
+ubuntu:20.04  15               0 critical, 0 high, 0 medium, 15 low
 
 ```
 
@@ -313,7 +362,7 @@ Possible exit codes and their meaning:
 3: failure, no supported projects detected
 ```
 
-* Finally, can monitor container images using the "**snyk container monitor**" command as shown below, please perform this step now
+* Finally, can monitor container images using the "**snyk container monitor**" command as shown below, please perform this step now using a different container image this time
 
 ```bash
 $ snyk container monitor pasapples/spring-crud-thymeleaf-demo:latest --project-name=spring-crud-thymeleaf-demo-container
