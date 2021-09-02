@@ -212,6 +212,13 @@ Here we will go ahead and fix our Dockerfile using the "**Open a Fix PR**" butto
 
 The Snyk CLI can run a container test on containers sitting in a registry and even your local docker deamon if you like. All the Snyk CLI needs is acces sto the registry itself which is for public Docker Hub images only requires a "docker login" to achieve that. The following examples show how to use the Snyk CLI to issue a container test.
 
+_Note: Testing container images through the CLI performs the following steps so it can take a few minutes on the first scan_
+
+1. Downloads the image if it’s not already available locally in your Docker daemon
+2. Determines the software installed in the image
+3. Sends that bill of materials to the Snyk Service
+4. Returns a list of the vulnerabilities in your image
+
 * You have already built "docker-goof" so go ahead and test that as shown below
 
 ```bash
