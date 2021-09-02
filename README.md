@@ -24,6 +24,8 @@ In this hands-on workshop we will achieve the follow:
 * Docker Hub Account - https://hub.docker.com/
 * Docker Desktop running locally - https://www.docker.com/products/docker-desktop
 
+_NOTE: Please ensure you have meet the Prerequisites prior to starting this workshop_
+
 # Workshop Steps
 
 _Note: It is assumed your using a mac for these steps but it should also work on windows or linux with some modifications to the scripts potentially_
@@ -74,7 +76,7 @@ You may already have images in your Dockerhub Registries but lets go and add a n
 * Login to Docker Hub as shown below. These will be the same credentials you used in Step 3 above.
 
 ```bash
-$ docker login -u DOCKER_HUB_USERNAME -p YOIUR_ACCESS_TOKEN_OR_PASSWORD
+$ docker login -u DOCKER_HUB_USERNAME -p YOUR_ACCESS_TOKEN_OR_PASSWORD
 Login Succeeded
 ```
 
