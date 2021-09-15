@@ -210,16 +210,46 @@ Here we will go ahead and fix our Dockerfile using the "**Open a Fix PR**" butto
 
 ## Step 7 Container Test using the Snyk CLI
 
-The Snyk CLI can run a container test on containers sitting in a registry and even your local docker deamon if you like. All the Snyk CLI needs is acces sto the registry itself which is for public Docker Hub images only requires a "docker login" to achieve that. The following examples show how to use the Snyk CLI to issue a container test.
+The Snyk CLI can run a container test on containers sitting in a registry and even your local docker deamon if you like. All the Snyk CLI needs is access to the registry itself which is for public Docker Hub images only requires a "docker login" to achieve that. The following examples show how to use the Snyk CLI to issue a container test.
 
-_Note: Testing container images through the CLI performs the following steps so it can take a few minutes on the first scan [Test images with the Snyk Container CLI](https://support.snyk.io/hc/en-us/articles/360003946917-Test-images-with-the-Snyk-Container-CLI)_
+* Before we get started please make sure you have setup the Snyk CLI. There are various install options as per the links below. Using the prebuilt binaries means you don't have to install NPM to install the Snyk CLI.
+
+1. Install Page - https://support.snyk.io/hc/en-us/articles/360003812538-Install-the-Snyk-CLI
+1. Prebuilt Binaries - https://github.com/snyk/snyk/releases
+
+_Note: Make sure you have the following version installed or later_
+
+```bash
+$ snyk --version
+1.675.0
+```
+
+* Authorize the snyk CLI with your account as follows
+
+```bash
+$ snyk auth
+
+Now redirecting you to our auth page, go ahead and log in,
+and once the auth is complete, return to this prompt and you'll
+be ready to start using snyk.
+
+If you can't wait use this url:
+https://snyk.io/login?token=ff75a099-4a9f-4b3d-b75c-bf9847672e9c&utm_medium=cli&utm_source=cli&utm_campaign=cli&os=darwin&docker=false
+
+Your account has been authenticated. Snyk is now ready to be used.
+```
+
+_Note: If you are having trouble authenticating via a browser with the Snyk App you can setup authentication using the API token as shown below
+[Authenticate using your API token](https://support.snyk.io/hc/en-us/articles/360004008258-Authenticate-the-CLI-with-your-account#UUID-4f46843c-174d-f448-cadf-893cfd7dd858_section-idm4557419555668831541902780562)_
+
+_Note: Testing container images through the CLI performs the following steps, so it can take a few minutes on the first scan [Test images with the Snyk Container CLI](https://support.snyk.io/hc/en-us/articles/360003946917-Test-images-with-the-Snyk-Container-CLI)_
 
 1. Downloads the image if it’s not already available locally in your Docker daemon
 2. Determines the software installed in the image
 3. Sends that bill of materials to the Snyk Service
 4. Returns a list of the vulnerabilities in your image
 
-* You have already built "docker-goof" so go ahead and test that as shown below
+* You have already built "docker-goof" so go ahead and test that as shown below, please use your dockerhub account username rather than "**pasapples**"
 
 ```bash
 $ snyk container test pasapples/docker-goof:latest
