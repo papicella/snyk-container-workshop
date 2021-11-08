@@ -93,7 +93,7 @@ docker.io/pasapples/docker-goof:latest
 
 * Run the following commands to TAG and PUSH the image to your Docker Hub account. 
   
-Note: Replace DOCKER_HUB_USERNAME with your Docker Bub username. 
+Note: Replace DOCKER_HUB_USERNAME with your Docker Hub username. 
 
 ```bash
 $ docker tag pasapples/docker-goof:latest DOCKER_HUB_USERNAME/docker-goof:latest
